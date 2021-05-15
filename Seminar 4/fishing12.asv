@@ -24,8 +24,6 @@ end
 %% a) Regeneration of Fish
 x = linspace(0,100,100);
 y = x.^2.*(100-x);
-
-fr_max = 550/max(y);
 y = 550/max(y)*y;
 
 figure(1)
@@ -38,6 +36,7 @@ grid on
 
 matlab2tikz('figures\regeneration_of_fish.tex','showInfo', false);
 
+fr_max = 550/max(y);
 fr = @(x) fr_max*x.^2.*(100-x);
 
 %% b) Ship Effectiveness
@@ -45,7 +44,6 @@ x = linspace(0,6,1000);
 y = x./(1+x);
 
 x = 100/6*x;
-fe_max = 25/max(y);
 y = 25/max(y)*y;
 
 figure(2)
@@ -59,28 +57,23 @@ grid on
 
 matlab2tikz('figures\ship_effectiveness.tex','showInfo', false);
 
+fe_max = 25/max(y);
 fe = @(x) fe_max * 6*x./(100+6*x);
 
 %% c) Dynamics of Fish Population
 x_max = 2000;
 f = @(x,y) fr(x./x_max) - y.*fe(x./x_max);
 
-N = 1000;
-ymax = 100;
+N = 30;
 equi = zeros(4,N);
-y = linspace(0,ymax,N);
-for i=1:N
+for y=0:N-1
     poly = fr_max*[-6 500 10000];
-    poly = [poly -175*y(i) 0];
-    equi(:,i) = roots(poly);
+    poly = [poly -175 0];
+    equi(:,y+1) = roots(fr_ma
 end
-equi = real(equi);
 
-figure
-for i=1:4
-    subplot(4,1,i)
-    plot(ymax/N*(1:N),equi(i,:))
-end
+figure(3)
+plot(1:N,x_equi)
 
 
 
