@@ -69,6 +69,7 @@ fe = @(x) fe_max * 6*x./(100+6*x);
 x_max = 2000;
 f = @(x,y) fr(x./x_max) - y.*fe(x./x_max);
 
+%% d) Equilibrium points and region of attraction
 N = 1000;
 ymax = 100;
 equi = zeros(4,N);
@@ -84,6 +85,7 @@ figure
 for i=1:4
     subplot(4,1,i)
     plot(ymax/N*(1:N),equi(i,:))
+    grid on
 end
 
 
