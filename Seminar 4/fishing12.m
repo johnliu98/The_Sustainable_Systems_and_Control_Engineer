@@ -36,8 +36,10 @@ title('Regeneration of Fish')
 pbaspect([1.5 1 1])
 grid on
 
-matlab2tikz('figures\regeneration_of_fish.tex','showInfo', false);
-
+if exist('matlab2tikz_path','var')
+    matlab2tikz('figures\regeneration_of_fish.tex','showInfo', false);
+end
+    
 fr = @(x) fr_max*x.^2.*(100-x);
 
 %% b) Ship Effectiveness
@@ -57,8 +59,10 @@ title('Ship Effectiveness')
 pbaspect([2 1 1])
 grid on
 
-matlab2tikz('figures\ship_effectiveness.tex','showInfo', false);
-
+if exist('matlab2tikz_path','var')
+    matlab2tikz('figures\ship_effectiveness.tex','showInfo', false);
+end
+    
 fe = @(x) fe_max * 6*x./(100+6*x);
 
 %% c) Dynamics of Fish Population
