@@ -157,7 +157,7 @@ if exist('matlab2tikz_path','var')
 end
 %}
 
-%{
+
 figure
 fc=fcontour(fx,[0,2000,0,40],...
     'Fill','on','MeshDensity',100,'LevelList',linspace(-800,800,10000));
@@ -174,7 +174,7 @@ end
 fname = 'figures/';                             % figure directory path
 filename = 'fish_dynamics_colormap';            % file name
 saveas(gca, fullfile(fname, filename), 'epsc')  % 'epsc' for colored plots
-%}
+
 
 %% f) Dynamics number of fishing  boats
 ky = [0.1 0.5 1];
